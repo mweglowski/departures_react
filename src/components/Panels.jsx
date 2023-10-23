@@ -8,7 +8,7 @@ const Panels = () => {
     let fetchedDepartures = []
 
     try {
-      const response = await fetch('http://ckan2.multimediagdansk.pl/delays?stopId=2001');
+      const response = await fetch('https://ckan2.multimediagdansk.pl/delays?stopId=2001');
       const data = await response.json();
 
       const currentTime = new Date()
