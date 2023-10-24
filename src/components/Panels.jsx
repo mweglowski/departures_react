@@ -4,13 +4,6 @@ import Panel from './Panel';
 const Panels = () => {
   const [currentDepartures, setCurrentDepartures] = useState([])
 
-  const fetchStopDepartures = async (id) => {
-    const response = await fetch('https://ckan2.multimediagdansk.pl/delays?stopId=' + id);
-    const data = await response.json();
-
-    return data
-  }
-
   const fetchDepartures = async () => {
     let fetchedDepartures = {}
 
@@ -18,18 +11,29 @@ const Panels = () => {
       const ids = ['1013', '1014', '1015', '1016', '1017', '1019', '1020', '1021', '1022', '1025', '1026', '1028', '1030', '1033', '2001', '2002', '2101', '2102', '2137', '2138']
 
       await Promise.all(ids.map(async (id) => {
-        fetchedDepartures[id] = []
-
-        // const data = await fetchStopDepartures();
-        // console.log(data)
-        const response = await fetch('https://ckan2.multimediagdansk.pl/delays?stopId=' + id);
-        const data = await response.json();
+        const departures_response = await fetch('https://ckan2.multimediagdansk.pl/delays?stopId=' + id);
+        const departures_data = await departures_response.json()
+        
+        const stops_response = await fetch('https://ckan.multimediagdansk.pl/dataset/c24aa637-3619-4dc2-a171-a23eec8f2172/resource/4c4025f0-01bf-41f7-a39f-d156d201b82b/download/stops.json')
+        const stops_data = await stops_response.json()
 
         const currentTime = new Date()
+        const formattedDate = currentTime.toISOString().split('T')[0]
+
+        let stopName = ""
+        // FINDING STOP NAME
+        for (let stop of stops_data[formattedDate].stops) {
+          if (stop.stopId === Number(id)) {
+            stopName = `${stop.stopName} (${id})`
+            break
+          }
+        }
+
+        fetchedDepartures[stopName] = []
 
         // ITERATE THROUGH DEPARTURES
-        for (let dep of data.delay) {
-          if (fetchedDepartures[id].length >= 5) {
+        for (let dep of departures_data.delay) {
+          if (fetchedDepartures[stopName].length >= 5) {
             break
           }
 
@@ -52,7 +56,7 @@ const Panels = () => {
             routeName: dep.headsign,
             timeLeft: timeDifference,
           };
-          fetchedDepartures[id].push(departure)
+          fetchedDepartures[stopName].push(departure)
         }
       }))
 
@@ -79,10 +83,10 @@ const Panels = () => {
 
   return (
     <div className='flex justify-evenly flex-wrap gap-2 p-2'>
-      {Object.keys(currentDepartures).map((id) => {
-        const departures = currentDepartures[id]
+      {Object.keys(currentDepartures).map((stopName) => {
+        const departures = currentDepartures[stopName]
 
-        return <Panel id={id} departures={departures} key={id} />
+        return <Panel stopName={stopName} departures={departures} key={Math.random()} />
       })}
     </div>
   )
