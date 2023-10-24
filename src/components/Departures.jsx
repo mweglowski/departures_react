@@ -13,9 +13,9 @@ const Departures = ({ departures }) => {
           </>
         ) : (
           <div className='text-slate-500 m-auto flex'>
-            <p>ktoś tu będzie czekał w pyte</p>
+            <p>to se poczekamy...</p>
             <div className='animate-bounce'>😅</div>
-            </div>
+          </div>
         )
       }
     </div>

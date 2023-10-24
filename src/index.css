@@ -10,3 +10,43 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+
+.green_breath_animation {
+  animation: green_breath 2.5s ease-in-out infinite;
+  color: rgb(120, 120, 120);
+}
+
+@keyframes green_breath {
+  0% {
+    color: rgb(120, 120, 120);
+    text-shadow: 0 0 2em transparent;
+  }
+  50% {
+    color: rgb(30, 217, 136);
+    text-shadow: 0 0 2em rgb(30, 217, 136);
+  }
+  100% {
+    color: rgb(120, 120, 120);
+    text-shadow: 0 0 2em transparent;
+  }
+}
+
+.orange_breath_animation {
+  animation: orange_breath 2.5s ease-in-out infinite;
+  color: rgb(120, 120, 120);
+}
+
+@keyframes orange_breath {
+  0% {
+    color: rgb(120, 120, 120);
+    text-shadow: 0 0 2em transparent;
+  }
+  50% {
+    color: rgb(239, 176, 59);
+    text-shadow: 0 0 1em rgb(239, 176, 59);
+  }
+  100% {
+    color: rgb(120, 120, 120);
+    text-shadow: 0 0 2em transparent;
+  }
+}

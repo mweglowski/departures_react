@@ -1,0 +1,1 @@
+fix bug with calculating timeLeft at late yours ex. 23:28 -> 7:12, since now app says that tram/bus is late big amount of minutes

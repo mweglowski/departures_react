@@ -59,8 +59,16 @@ const Panels = () => {
           fetchedDepartures[stopName].push(departure)
         }
       }))
+      
+      // SORT FETCHED DEPARTURES
+      let keysArray = Object.keys(fetchedDepartures)
+      keysArray.sort()
+      let sortedFetchedDepartures = {}
+      for (let key of keysArray) {
+        sortedFetchedDepartures[key] = fetchedDepartures[key]
+      }
 
-      setCurrentDepartures(fetchedDepartures)
+      setCurrentDepartures(sortedFetchedDepartures)
     } catch (error) {
       console.error('Error: ', error)
     }
@@ -74,9 +82,10 @@ const Panels = () => {
 
     fetchData()
 
+    // REFRESH PAGE EVERY 10 SECONDS
     const intervalId = setInterval(() => {
       fetchData()
-    }, 15000)
+    }, 10000)
 
     return () => clearInterval(intervalId)
   }, [])
