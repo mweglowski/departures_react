@@ -13,7 +13,7 @@ const Panels = () => {
       await Promise.all(ids.map(async (id) => {
         const departures_response = await fetch('https://ckan2.multimediagdansk.pl/delays?stopId=' + id);
         const departures_data = await departures_response.json()
-        
+
         const stops_response = await fetch('https://ckan.multimediagdansk.pl/dataset/c24aa637-3619-4dc2-a171-a23eec8f2172/resource/4c4025f0-01bf-41f7-a39f-d156d201b82b/download/stops.json')
         const stops_data = await stops_response.json()
 
@@ -42,7 +42,19 @@ const Panels = () => {
           estimatedTimeDate.setHours(Number(hours))
           estimatedTimeDate.setMinutes(Number(minutes))
 
-          let timeDifference = Math.round((estimatedTimeDate - currentTime) / (1000 * 60))
+          let timeDifference = 0
+
+          // HANDLING PROBLEM WHEN CURRENT HOUR IS BIGGER THAN IN ESTIMATED TIME EX. currentTime = 23:54, estimatedTime = 01:32
+          if (currentTime.getHours() > Number(hours)) {
+            timeDifference += 60 * (24 - currentTime.getHours())
+            timeDifference += (60 * Number(hours)) + Number(minutes)
+          } else {
+            estimatedTimeDate.setHours(Number(hours))
+            estimatedTimeDate.setMinutes(Number(minutes))
+
+            timeDifference = Math.round((estimatedTimeDate - currentTime) / (1000 * 60))
+          }
+
           if (timeDifference === 0) {
             timeDifference = ">>>"
           } else if (timeDifference < 0) {
@@ -60,7 +72,7 @@ const Panels = () => {
           fetchedDepartures[stopName].push(departure)
         }
       }))
-      
+
       // SORT FETCHED DEPARTURES
       let keysArray = Object.keys(fetchedDepartures)
       keysArray.sort()
