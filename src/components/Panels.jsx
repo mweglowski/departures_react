@@ -46,7 +46,8 @@ const Panels = () => {
           if (timeDifference === 0) {
             timeDifference = ">>>"
           } else if (timeDifference < 0) {
-            timeDifference = "spóźnia się " + String(timeDifference * -1) + "min"
+            timeDifference = "opóźnienie 😴"
+            //  + String(timeDifference * -1) + "min"
           } else {
             timeDifference += "min"
           }

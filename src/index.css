@@ -19,7 +19,6 @@
 @keyframes green_breath {
   0% {
     color: rgb(120, 120, 120);
-    text-shadow: 0 0 2em transparent;
   }
   50% {
     color: rgb(30, 217, 136);
@@ -27,7 +26,6 @@
   }
   100% {
     color: rgb(120, 120, 120);
-    text-shadow: 0 0 2em transparent;
   }
 }
 
@@ -39,14 +37,12 @@
 @keyframes orange_breath {
   0% {
     color: rgb(120, 120, 120);
-    text-shadow: 0 0 2em transparent;
   }
   50% {
-    color: rgb(239, 176, 59);
-    text-shadow: 0 0 1em rgb(239, 176, 59);
+    color: rgb(252, 196, 29);
+    text-shadow: 0 0 0.5em rgb(242, 202, 57);
   }
   100% {
     color: rgb(120, 120, 120);
-    text-shadow: 0 0 2em transparent;
   }
 }
