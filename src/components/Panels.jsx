@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import Panel from './Panel';
 
 const Panels = () => {
@@ -78,7 +78,7 @@ const Panels = () => {
   }, [])
 
   return (
-    <div className='flex justify-center flex-wrap gap-2 p-2'>
+    <div className='flex justify-evenly flex-wrap gap-2 p-2'>
       {Object.keys(currentDepartures).map((id) => {
         const departures = currentDepartures[id]
 
