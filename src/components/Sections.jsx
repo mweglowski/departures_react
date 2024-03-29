@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Section from "./Section";
+import Clock from "./Clock";
+import FetchingAnimation from "./FetchingAnimation";
 
 const Sections = () => {
   const [currentDepartures, setCurrentDepartures] = useState({});
-  const [isFetchingStops, setIsFetchingStops] = useState(false);
+  const [isFetchingStops, setIsFetchingStops] = useState(true);
 
   const fetchStopsData = async () => {
     const response = await fetch(
@@ -105,13 +107,23 @@ const Sections = () => {
   const areas = ["Brama Wyżynna", "Hucisko", "Dworzec Główny"];
 
   return (
-    <div>
+    <div className="flex flex-col relative">
+      <Clock />
       {isFetchingStops ? (
-        <div className="text-2xl mt-[200px] flex justify-center animate-pulse">
-          HERE SHOULD BE ANIMATION OF FETCHING STOPS
+        <div className="absolute w-full">
+          <div className="video-background -z-10">
+            <video autoPlay loop muted className="video">
+              <source src="./assets/videos/trenerpawel.mp4" type="video/mp4" />
+            </video>
+            <div className="video-overlay"></div>
+          </div>
+          <div className="text-4xl mt-[200px] flex justify-center animate-pulse z-10 text-white flex-col gap-[50px]">
+            <FetchingAnimation text={"FETCHING"} />
+            <FetchingAnimation text={"DATA"} />
+          </div>
         </div>
       ) : (
-        <div className="flex gap-2 p-2">
+        <div className="flex gap-2 p-2 justify-evenly w-full">
           {areas.map((area, index) => (
             <Section
               currentDepartures={currentDepartures}
