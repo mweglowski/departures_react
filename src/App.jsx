@@ -1,9 +1,11 @@
-import Panels from './components/Panels'
+import Sections from "./components/Sections";
+import Clock from "./components/Clock";
 
 function App() {
   return (
-    <div className="bg-slate-100 h-full">
-      <Panels />
+    <div>
+      <Clock />
+      <Sections />
     </div>
   );
 }
