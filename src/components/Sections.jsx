@@ -15,7 +15,7 @@ const Sections = () => {
     const currentTime = new Date();
     const formattedDate = currentTime.toISOString().split("T")[0];
 
-    // setIsFetchingStops(false);
+    setIsFetchingStops(false);
 
     return data[formattedDate].stops;
   };
