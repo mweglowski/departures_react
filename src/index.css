@@ -16,8 +16,10 @@ body {
 }
 
 .green_breath_animation {
-  animation: green_breath 2.5s ease-in-out infinite;
-  color: rgb(120, 120, 120);
+  /* animation: green_breath 2.5s ease-in-out infinite; */
+  /* color: rgb(120, 120, 120); */
+  color: rgb(30, 217, 136);
+  text-shadow: 0 0 2em rgb(30, 217, 136);
 }
 
 @keyframes green_breath {

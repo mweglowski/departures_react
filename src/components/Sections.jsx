@@ -15,8 +15,6 @@ const Sections = () => {
     const currentTime = new Date();
     const formattedDate = currentTime.toISOString().split("T")[0];
 
-    setIsFetchingStops(false);
-
     return data[formattedDate].stops;
   };
 
@@ -90,6 +88,7 @@ const Sections = () => {
           return acc;
         }, {})
     );
+    setIsFetchingStops(false);
   };
 
   useEffect(() => {
@@ -102,7 +101,7 @@ const Sections = () => {
 
     const intervalId = setInterval(fetchData, 10000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [currentDepartures]);
 
   const areas = ["Brama Wyżynna", "Hucisko", "Dworzec Główny"];
 
