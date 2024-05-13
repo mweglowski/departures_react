@@ -1,5 +1,5 @@
-## DESKTOP
-![Desktop Preview]()
+### Application showing tram/bus deparatures from nearest stops.
 
-## MOBILE
-![Desktop Preview]()
+## PREVIEW
+![Desktop Preview](https://i.imgur.com/S4xp3jd.png)
+
