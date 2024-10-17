@@ -4,7 +4,7 @@ const FetchingAnimation = ({ text }) => {
   const letters = text.split("").map((letter, index) => (
     <span
       key={index}
-      className="animated-letter"
+      className="animated-letter text-black"
       style={{ "--delay": `${index * 0.15}s` }}
     >
       {letter}

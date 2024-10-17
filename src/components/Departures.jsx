@@ -8,15 +8,16 @@ const Departures = ({ departures }) => {
         <>
           {departures.map((departure, index) => {
             // TO CHANGE
+            console.log(departure)
             if (index < 20) {
               return <Departure departure={departure} key={Math.random()} />;
             }
+            // return <Departure departure={departure} key={Math.random()} />;
           })}
         </>
       ) : (
         <div className="text-slate-500 m-auto flex">
           <p>There are not any near departures.</p>
-          {/* <div className='animate-bounce'>😅</div> */}
         </div>
       )}
     </div>
