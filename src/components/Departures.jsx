@@ -7,12 +7,9 @@ const Departures = ({ departures }) => {
       {departures.length !== 0 ? (
         <>
           {departures.map((departure, index) => {
-            // TO CHANGE
-            console.log(departure)
             if (index < 20) {
               return <Departure departure={departure} key={Math.random()} />;
             }
-            // return <Departure departure={departure} key={Math.random()} />;
           })}
         </>
       ) : (

@@ -117,3 +117,27 @@ body {
     transform: translateY(0) rotate(360deg) translateX(0);
   }
 }
+
+/* SECTIONS */
+.sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  grid-template-areas:
+    "brama hucisko glowny"
+    "brama skm glowny"
+  ;
+}
+.section-brama {
+  grid-area: brama;
+}
+.section-hucisko {
+  grid-area: hucisko;
+}
+.section-glowny {
+  grid-area: glowny;
+}
+.section-skm {
+  grid-area: skm;
+}
